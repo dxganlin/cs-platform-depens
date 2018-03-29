@@ -1,0 +1,130 @@
+header img{
+    width: 100px;
+    margin: 10px 20px;
+}
+.eBayColors {
+    height: 4px;
+}
+.eBayColors div.red {
+    background-color: #e2343d;
+}
+.eBayColors div.blue {
+    background-color: #1067cf;
+}
+.eBayColors div.yellow {
+    background-color: #f3ae29;
+}
+.eBayColors div.green {
+    background-color: #87b62b;
+}
+.eBayColors div {
+    width: 25%;
+    height: 4px;
+    display: inline-block;
+    float: left;
+}
+.header {
+    display: flex;
+    height: 60px;
+    align-items: center;
+}
+.header div {
+    font-size: 1.5rem;
+    margin-left: 30px;
+}
+.tip {
+    padding: 0 15px;
+}
+.tip div{
+    margin: 15px 0;
+}
+#myDiagramDiv {
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin: 15px;
+    height: 1200px;
+}
+#dialogDiagramDiv {
+    height: 500px;
+}
+#myDiagramDiv canvas,
+#dialogDiagramDiv canvas{
+    outline: none;
+}
+table {
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+td {
+    border: 1px solid #ccc;
+}
+.tip td div{
+    padding: 1rem 1.5rem;
+    margin: 0;
+}
+table a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.75);
+}
+table a:hover {
+    text-decoration: underline;
+}
+.comment {
+    color: #00AA00;
+}
+.ObjectBrace {
+    color: #00AA00;
+    font-weight: bold;
+}
+.ArrayBrace {
+    color: #0033FF;
+    font-weight: bold;
+}
+.PropertyName {
+    color: #CC0000;
+    font-weight: bold;
+}
+.String {
+    color: #007777;
+}
+.Number {
+    color: #AA00AA;
+}
+.Boolean {
+    color: #0000FF;
+}
+.Function {
+    color: #AA6633;
+    text-decoration: italic;
+}
+.Null {
+    color: #0000FF;
+}
+.Comma {
+    color: #000000;
+    font-weight: bold;
+}
+#search {
+    height: 30px;
+    width: 20rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 5px;
+}
+button#searchBtn {
+    font-size: 14px;
+    background-color: #1067cf;
+    border: 1px solid #1067cf;
+    margin-left: 10px;
+    color: #fff;
+    height: 34px;
+    width: 6rem;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+/*.ui-widget-header {*/
+    /*background: rgba(243, 174, 41, 0.37);*/
+/*}*/
+#dialogDiagramDivContainer {
+    display: none;
+}

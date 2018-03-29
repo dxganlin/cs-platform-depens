@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery JSONView</title>
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <header>
+    <div class="header">
+      <img src="images/ebay.jpg">
+      <div>CS Raptor Dependencies Diagram</div>
+    </div>
+    
+    <div class="eBayColors">
+      <div class="red"></div>
+      <div class="blue"></div>
+      <div class="yellow"></div>
+      <div class="green"></div>
+    </div>
+  </header>
+  <div class="tip">
+    <div>Platform team has developed multiple jars which have been used in many projects. Developers can quickly get the affected pools when some jars have been modified through the diagram.</div>
+    <div>These are pools information. Please check detail information by clicking each one.</div>
+    <table>
+      <tr>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csrefds">r1csrefds</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbescase">r1csbescase</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbesds">r1csbesds</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/cspubdivcapi">r1cspubapi1</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csapisec">r1csapisec</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csapi1">r1csapi1</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csapi">r1csapi</a></div></td>
+      </tr>
+      <tr>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/cskbwebapp">r1cskbwebapp</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csadmin">r1csadmin</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csweb">r1csweb</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbesns">r1csbesns</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbesasf">r1csbesasf</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbes0">r1csbes0</a></div></td>
+        <td><div><a target="_black" href="https://github.corp.ebay.com/CS-Platform/csbesmisc">r1csbesmisc1</a></div></td>
+      </tr>
+    </table>
+    <h4>Project Dependencies Diagram</h4>
+    <div>Please enter application names whose style is "csapi, cskbwebapp, csadmin, cswebParent". Click Search button then you will get new diagram.
+      Please refer search value from "csrefds, csbescase, csbesds, cspubdivcapi, csapisec, csapi1, csapi, cskbwebapp, csadmin, cswebParent, csbesns, csbesasf, csbes0, csbesmisc".</div>
+    <div>
+      <input id="search"/><button id="searchBtn" onclick="search()">Search</button>
+    </div>
+  </div>
+  <div id="DiagramContainer">
+    <div id="myDiagramDiv"></div>
+  </div>
+  <div id="dialogDiagramDivContainer">
+    <div id="dialogDiagramDiv" title="Near Selected Jar"></div>
+  </div>
+  <div class="tip">
+    <h4>How to use this tool?</h4>
+    <div>You can change the diagram if pom has been changed. Here is the steps how to collect data from pom file, and how to convert data to JSON format which the tool needs.</div>
+    <ol>
+      <li>Open one pom.xml, then copy content to <a target="_black" href="http://www.bejson.com/xml2json/">XML transfer to JSON</a> site.</li>
+      <li>Open dev tool of current page, define a variable <span style="color:red;">var</span> <span style="color:blue;">json</span>, paste the result of #1 as the value of <span style="color:blue;">json</span> variable.</li>
+      <li>Run below JS code to get dependencies array:<br>
+        <pre class="CodeContainer" style="margin-bottom: 0;">
+<span class="PropertyName">var</span> <span class="Boolean">result </span>= filter(json.project.dependencies.dependency);
+<span class="comment">//var result = filter(json.project.dependencyManagement.dependencies.dependency);</span>
+<span>console.log(JSON.stringify(result.finalObj));</span>
+        </pre>
+      </li>
+      <li>Copy the dependencies result to <a target="_black" href="http://www.bejson.com/jsonviewernew/">JSON View</a> to format JSON data.</li>
+      <li>Integrate data likes below JSON style, then append such code to json variable in main.js file.
+<pre class="CodeContainer">
+  <span class="PropertyName">"csapi"</span>: <span class="ObjectBrace">{</span>
+    <span class="PropertyName">"groupId"</span>: <span class="String">"com.ebay.app.raptor"<span class="Comma">,</span> </span>
+    <span class="PropertyName">"artifactId"</span>: <span class="String">"csapi"<span class="Comma">,</span> </span>
+    <span class="PropertyName">"version"</span>: <span class="String">"3.1025.3-RELEASE"<span class="Comma">,</span> </span>
+    <span class="PropertyName">"gitPath"</span>: <span class="String">"https://github.corp.ebay.com/CS-Platform/csapi"<span class="Comma">,</span> </span>
+    <span class="PropertyName">"isAppLayer"</span>: <span class="Boolean">true<span class="Comma">,</span> </span>
+    <span class="PropertyName">"dependencies"</span>: <span class="ArrayBrace">[</span>
+      <span class="ObjectBrace">{</span>
+        <span class="PropertyName">"groupId"</span>: <span class="String">"com.ebay.app.raptor"<span class="Comma">,</span> </span>
+        <span class="PropertyName">"artifactId"</span>: <span class="String">"csapiService"<span class="Comma">,</span> </span>
+        <span class="PropertyName">"version"</span>: <span class="String">"3.1025.3-RELEASE"<span class="Comma">,</span> </span>
+        <span class="PropertyName">"type"</span>: <span class="String">"war"</span>
+      <span class="ObjectBrace">}</span><span class="Comma">,</span> 
+      <span class="ObjectBrace">{</span>
+        <span class="PropertyName">"groupId"</span>: <span class="String">"com.ebay.app.raptor"<span class="Comma">,</span> </span>
+        <span class="PropertyName">"artifactId"</span>: <span class="String">"csapiLib"<span class="Comma">,</span> </span>
+        <span class="PropertyName">"version"</span>: <span class="String">"3.1025.3-RELEASE"</span>
+      <span class="ObjectBrace">}</span>
+    <span class="ArrayBrace">]</span>
+  <span class="ObjectBrace">}</span>
+</pre>
+      </li>
+      <li>Reload this page, you will find diagram has new look and feel.</li>
+    </ol>
+  </div>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/go.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
